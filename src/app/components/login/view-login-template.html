@@ -1,0 +1,42 @@
+<article class="login">
+
+    <br>
+
+    <div class="msg-error animated fadeIn" ng-show="viewLogin.showErrorMsg">
+        First name, last name and avatar are mandatory
+    </div>
+
+    <p>
+        <label for="firstName">First name</label>
+        <br>
+        <input type="text" id="firstName" ng-model="viewLogin.firstName" ng-class="{ 'has-error': !viewLogin.firstName && viewLogin.formIsSend }">
+    </p>
+    <br>
+    <p>
+        <label for="lastName">Last name</label>
+        <br>
+        <input type="text" id="lastName" ng-model="viewLogin.lastName" ng-class="{ 'has-error': !viewLogin.lastName && viewLogin.formIsSend }">
+    </p>
+    <br><br>
+    <p>
+        <label for="avatar">Avatar</label>
+        <br>
+            <img class="avatar-login" src="app/styles/imgs/avatar1.jpg">
+            <input name="avatar" type="radio" ng-model="viewLogin.avatar" value="avatar1">
+            Homer
+            </input>
+            <img class="avatar-login" src="app/styles/imgs/avatar2.jpg">
+            <input name="avatar" type="radio" ng-model="viewLogin.avatar" value="avatar2">
+            Bart
+            </input>
+            <img class="avatar-login" src="app/styles/imgs/avatar3.jpg">
+            <input name="avatar" type="radio" ng-model="viewLogin.avatar" value="avatar3">
+            Marge
+        </div>
+    </p>
+    <p>
+        <div class="circle-green" ng-click="viewLogin.actions.goToGame()">
+            PLAY
+        </div>
+    </p>
+</article>

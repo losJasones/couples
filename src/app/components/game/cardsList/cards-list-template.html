@@ -1,0 +1,9 @@
+<article>
+    <div class="game-subheader"><span class="guesses">Guesses: {{cardsList.guesses}}</span> <span class="misses">Misses: {{cardsList.misses}}</span> </div>
+    
+    <cards-card ng-repeat="item in cardsList.remainingCards" 
+    item-card="item" ng-click="cardsList.actions.selectCard(item.id)">
+    </cards-card>
+ 
+     <p><div class="circle-green" ng-click="cardsList.actions.start()">Restart</button></p>
+</article>

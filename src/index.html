@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Couples</title>
+    <meta name="description" content="Couples cards game">
+    <meta name="viewport" content="width=device-width">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="app/styles/main.css">
+</head>
+
+<body ng-app="app" ng-strict-di>
+    <section class="main-container">
+        <header-couples></header-couples>   
+        
+        <ui-view></ui-view>  
+
+         <footer-couples></footer-couples>      
+    </section>
+    
+    <!-- angular -->
+    <script src="vendor/angular.min.js"></script>
+    <script src="vendor/angular-ui-router.min.js"></script>
+
+    <!-- our app -->
+    <script src="app/app.js"></script>
+
+    <!-- our factory -->
+    <script src="app/services/couples-factory.js"></script>
+
+    <!-- components -->
+        <!-- main state -->
+        <script src="app/components/main/view-main.js"></script>
+        
+        <!-- login state -->
+        <script src="app/components/login/view-login.js"></script>
+
+          <!-- game state -->
+        <script src="app/components/game/view-game.js"></script>
+        <script src="app/components/game/gameHeader/game-header.js"></script>
+        <script src="app/components/game/cardsList/cards-list.js"></script>
+        <script src="app/components/game/card/card.js"></script>
+
+        <!-- commons -->
+        <script src="app/components/commons/header/header.js"></script>
+        <script src="app/components/commons/footer/footer.js"></script>
+
+</body>

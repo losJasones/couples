@@ -1,0 +1,20 @@
+<div class="list-cards-card" ng-switch on="{{cardsCard.itemCard.isSelected}}">
+
+        <img ng-switch-when="false" ng-src="app/styles/imgs/cardsback.jpg" 
+        class="list-cards-card-img" ng-click="cardsCard.actions.selectCard(cardsCard.itemCard.id)">
+
+        <img ng-switch-when="true" ng-src="app/styles/imgs/{{cardsCard.itemCard.img}}" 
+        class="list-cards-card-img" ng-click="cardsCard.actions.selectCard(cardsCard.itemCard.id)">
+
+</div>
+
+<!--<div class="list-cards-card">
+    
+    <img ng-hide="{{cardsCard.itemCard.isSelected}}"
+    ng-src="app/styles/imgs/cardsback.jpg" 
+    class="list-cards-card-img" ng-click="cardsCard.actions.selectCard(cardsCard.itemCard.id)">
+
+    <img ng-show="{{cardsCard.itemCard.isSelected}}"  
+    ng-src="app/styles/imgs/{{cardsCard.itemCard.img}}" 
+    class="list-cards-card-img" ng-click="cardsCard.actions.selectCard(cardsCard.itemCard.id)">
+</div>-->

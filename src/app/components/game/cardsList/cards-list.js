@@ -8,30 +8,45 @@
 
   function cardsList($state, $timeout, couplesFactory) {
     var vm = this;
-
     vm.$onInit = function () {
       vm.remainingCards = couplesFactory.getRemainingCards();
       vm.guesses = 0;
       vm.misses = 0;
+      vm.shownCardsNumber = 0;
+      vm.showSuccessMessage=false;
     };
 
     vm.actions = {};
-    vm.actions.start = function () {
-      couplesFactory.shuffleCards();
-      vm.remainingCards = couplesFactory.getRemainingCards();
+
+    vm.actions.showCard = function (id) {
+      vm.shownCardsNumber++;
+      couplesFactory.showCardById(id);
+      if (vm.shownCardsNumber > 1) {
+        vm.actions.updateGuessesOrMisses();
+      }
     };
-    vm.actions = {};
-    vm.actions.selectCard = function (id) {
-      couplesFactory.selectCardById(id);
-      //vm.actions.refreshPage();
-    }
-    vm.actions.refreshPage = function () {
+
+    vm.actions.updateGuessesOrMisses = function () {
+      vm.shownCardsNumber = 0;
       $timeout(function () {
-        console.log('Dentro del timeout')
-        vm.remainingCards = couplesFactory.getRemainingCards();
-      }, 0);
-    }
-
+        if (couplesFactory.isGuessCorrect()) {
+          vm.guesses++;
+          couplesFactory.deleteVisibleCards();
+          if(vm.guesses>7){
+            vm.showSuccessMessage=true;
+          }
+        } else {
+          vm.misses++;
+          couplesFactory.hideCards();
+        }
+      }, 750);
+    };
+    
+    vm.actions.startAgain = function () {
+      vm.remainingCards=couplesFactory.shuffleCards();
+      vm.guesses=0;
+      vm.misses=0;
+      vm.showSuccessMessage=false;
+    };
   }
-
 })(angular);

@@ -11,9 +11,7 @@
 
     function cardsCard(couplesFactory, $timeout) {
         var vm = this;
-        vm.$onInit = function () {
-            
-        };
+        vm.$onInit = function () {};
     }
 })(angular);
 

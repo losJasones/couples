@@ -9,13 +9,8 @@
   function viewMain($state) {
     var vm = this;
 
-    vm.$onInit = function() {
-    
-    };
+    vm.$onInit = function() {};
 
-    vm.renders = {};
-
-    
     vm.actions = {};
 
     vm.actions.goToLogin = function() {

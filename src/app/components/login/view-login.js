@@ -11,17 +11,12 @@
 
     vm.$onInit = function () {
       vm.showErrorMsg = false;
-      vm.showSuccessMsg = false;
       vm.formIsSend = false;
     };
-
-    vm.renders = {};
-
 
     vm.actions = {};
 
     vm.actions.goToGame = function () {
-      vm.showSuccessMsg = false;
       var newPlayer = {
         firstName: vm.firstName,
         lastName: vm.lastName,
@@ -37,11 +32,9 @@
 
       if (!vm.showErrorMsg) {
         vm.formIsSend = false;
-        vm.showSuccessMsg = true;
+        couplesFactory.shuffleCards();
         $state.go('game', {player: newPlayer});
       };
     }
-
   }
-
 })(angular);

@@ -12,9 +12,7 @@
   function gameHeader() {
     var vm = this;
 
-    vm.$onInit = function() {
-      
-    };
+    vm.$onInit = function() {};
 
   }
 

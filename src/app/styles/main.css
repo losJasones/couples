@@ -10,17 +10,32 @@
 }
 
 .main-header {
-    font-size:24px;
+    font-size:60px;
     text-align: center;
-    background: black;
-    color: white;
+    color: darkgoldenrod;
+    font-family: 'Dancing Script', cursive;
 }
 
 .main-footer {
     text-align: center;
-    background: grey;
-    color: white;
+    color: darkgoldenrod;
+    font-size:30px;
+    font-family: 'Dancing Script', cursive;
 }
+.aboutUs{
+    font-family: 'Amatic SC', cursive;
+    text-align: center;
+    color: gold;
+    font-size:75px;
+}
+
+.player-labels{
+    font-family: 'Amatic SC', cursive;
+    text-align: center;
+    color: gold;
+    font-size:20px;
+}
+
 
 .header-logo{
   height: 50px;
@@ -86,6 +101,12 @@
     cursor: pointer;
 }
 
+.green-background{
+    background-image: url("imgs/tapete_verde.jpg");
+    height:100%;
+    width: 100%;
+}
+
 .circle-green:hover{
     background: green;
 }
@@ -94,16 +115,24 @@
     background: red;
 }
 
-.avatar-login{
-  width: 60px;
-  height:60px; 
+.avatar-img{
+  height: 70px;
+  width: 70px;
+  border-radius: 50px;
 }
 
-.game-header{
-  background:lightblue;
-  color: blue;
-  font-size: 30px;
+.radio_item{
+display: none !important;
 }
+
+.label_item {
+opacity: 0.5;
+}
+
+.radio_item:checked + label {
+opacity: 1;
+}
+
 
 .header-game-avatar{
   height: 40px;
@@ -145,17 +174,18 @@
 }
 
 .guesses{
-  color: green;
+  padding-right: 5px;
+  color: lightgreen;
 }
 
 .misses{
-  color: red;
+  color: salmon;
+  padding-left: 5px;
 }
 
 .game-subheader{
   font-size: 25px;
   font-weight: bold;
-  border-bottom: thin solid grey;
 }
 
 .has-error {

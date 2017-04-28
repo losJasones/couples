@@ -1,4 +1,4 @@
-<article class="login">
+<article class="login green-background">
 
     <br>
 
@@ -7,31 +7,30 @@
     </div>
 
     <p>
-        <label for="firstName">First name</label>
+        <label for="firstName" class="player-labels">First name</label>
         <br>
         <input type="text" id="firstName" ng-model="viewLogin.firstName" ng-class="{ 'has-error': !viewLogin.firstName && viewLogin.formIsSend }">
     </p>
     <br>
     <p>
-        <label for="lastName">Last name</label>
+        <label for="lastName" class="player-labels">Last name</label>
         <br>
         <input type="text" id="lastName" ng-model="viewLogin.lastName" ng-class="{ 'has-error': !viewLogin.lastName && viewLogin.formIsSend }">
     </p>
     <br><br>
     <p>
-        <label for="avatar">Avatar</label>
+        <label for="avatar" class="player-labels">Avatar</label>
         <br>
-            <img class="avatar-login" src="app/styles/imgs/avatar1.jpg">
-            <input name="avatar" type="radio" ng-model="viewLogin.avatar" value="avatar1">
-            Homer
-            </input>
-            <img class="avatar-login" src="app/styles/imgs/avatar2.jpg">
-            <input name="avatar" type="radio" ng-model="viewLogin.avatar" value="avatar2">
-            Bart
-            </input>
-            <img class="avatar-login" src="app/styles/imgs/avatar3.jpg">
-            <input name="avatar" type="radio" ng-model="viewLogin.avatar" value="avatar3">
-            Marge
+
+            <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar1" name="avatar" id="radio1">
+            <label class="label_item" for="radio1"> <img class="avatar-img" src="app/styles/imgs/avatar1.jpg"> </label>
+
+            <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar2" name="avatar" id="radio2">
+            <label class="label_item" for="radio2"> <img class="avatar-img" src="app/styles/imgs/avatar2.jpg"> </label>
+
+             <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar3" name="avatar" id="radio3">
+            <label class="label_item" for="radio3"> <img class="avatar-img" src="app/styles/imgs/avatar3.jpg"> </label>
+
         </div>
     </p>
     <p>

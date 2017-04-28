@@ -10,13 +10,8 @@
     var vm = this;
 
     vm.$onInit = function() {
-    vm.player=$stateParams.player;
+      vm.player=$stateParams.player;
     };
-
-    vm.renders = {};
-
-    
-   
   }
 
  

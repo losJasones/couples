@@ -57,7 +57,7 @@
 
 .list-cards-card {
     width: 100px;
-    height: 125px;
+    height: 130px;
     display: inline-block;
     margin: 0.5em;
     padding:0.2em;
@@ -69,12 +69,14 @@
 .list-cards-card-img {
     width:100%;
     height: 100%;
+    border-radius: 4px;
 }
 
 .list-cards-card-title {
     font-weight: bold;
     margin-bottom: 0;
     text-align: center;
+    position: fixed;
 }
 
 .circle-red{

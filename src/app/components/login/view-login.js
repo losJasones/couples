@@ -20,7 +20,7 @@
       var newPlayer = {
         firstName: vm.firstName,
         lastName: vm.lastName,
-        avatar: vm.avatar
+        avatar: vm.avatar,
       };
       vm.formIsSend = true;
 

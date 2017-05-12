@@ -9,20 +9,25 @@
   function cardsList($state, $timeout, couplesFactory) {
     var vm = this;
     vm.$onInit = function () {
-      vm.remainingCards = couplesFactory.getRemainingCards();
+      vm.remainingCards = couplesFactory.shuffleCards();
       vm.guesses = 0;
       vm.misses = 0;
       vm.shownCardsNumber = 0;
+      vm.firstShownCardId=-1;
       vm.showSuccessMessage=false;
     };
 
     vm.actions = {};
 
     vm.actions.showCard = function (id) {
-      vm.shownCardsNumber++;
-      couplesFactory.showCardById(id);
+      if(vm.firstShownCardId != id){
+        vm.shownCardsNumber++;
+        couplesFactory.showCardById(id);
+        vm.firstShownCardId=id;
+      }
       if (vm.shownCardsNumber > 1) {
         vm.actions.updateGuessesOrMisses();
+        vm.firstShownCardId=-1;
       }
     };
 
@@ -39,7 +44,7 @@
           vm.misses++;
           couplesFactory.hideCards();
         }
-      }, 750);
+      }, 500);
     };
     
     vm.actions.startAgain = function () {

@@ -22,7 +22,7 @@
       { id: 12, name: 'angular', img: 'angular.jpg', isVisible: false },
       { id: 13, name: 'css', img: 'css.jpg', isVisible: false },
       { id: 14, name: 'html', img: 'html.jpg', isVisible: false },
-      { id: 15, name: 'sass', img: 'sass.jpg', isVisible: false },
+      { id: 15, name: 'sass', img: 'sass.jpg', isVisible: false }
     ];
 
     module.remainingCards = angular.copy(allCards);
@@ -31,7 +31,7 @@
       return self.remainingCards;
     }
 
-    module.hideCards = function() {
+    module.hideCards = function () {
       var len = self.remainingCards.length;
       while (len--) {
         if (self.remainingCards[len].isVisible) {
@@ -53,20 +53,17 @@
 
     module.isGuessCorrect = function () {
       let isFirstFound = false;
-      let visibleCardIdCouple = [];
+      let firstVisibleCard = {};
       let len = self.remainingCards.length;
       while (len--) {
-        if (self.remainingCards[len].isVisible) {
+        let currentCard = self.remainingCards[len];
+        if (currentCard.isVisible) {
           if (!isFirstFound) {
             isFirstFound = true;
-            visibleCardIdCouple.push(self.remainingCards[len].name);
-          } else {
-            visibleCardIdCouple.push(self.remainingCards[len].name);
-            if (visibleCardIdCouple[0] === visibleCardIdCouple[1]) {
-              return true;
-            }
+            firstVisibleCard=currentCard;
+          } else if (firstVisibleCard.name === currentCard.name) {
+            return true;
           }
-
         }
       }
       return false;

@@ -1,16 +1,19 @@
 (function (angular) {
 
-  angular.module('app').factory('couplesFactory', [couplesFactory]);
+  angular.module('app').factory('couplesFactory', ['$http', couplesFactory]);
 
-  function couplesFactory() {
+  function couplesFactory($http) {
     var module = {};
     var self = module;
 
-      module.getCards = function () {
+    module.getCards = function () {
       $http({
         url: 'http://localhost:8080/movies',
         method: 'GET'
       }).then(function (res) {
+        for (var i=0; i<res.data.length; i++){
+          res.data[i].isVisible=false;
+        }    
         self.setCards(res.data);
       }, function (error) {
         console.log(error);
@@ -22,7 +25,7 @@
 
     module.setCards = function(cards){
       allCards=cards;
-      self.shuffleCards();
+      self.remainingCards=angular.copy(allCards);
     }
 
     module.getRemainingCards = function () {

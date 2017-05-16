@@ -20,7 +20,7 @@
     vm.actions = {};
 
     vm.actions.showCard = function (id) {
-      if (vm.firstShownCardId != id && vm.shownCardsNumber < 2) {
+      if (vm.firstShownCardId !== id && vm.shownCardsNumber < 2) {
         vm.shownCardsNumber++;
         couplesFactory.showCardById(id);
         vm.firstShownCardId = id;

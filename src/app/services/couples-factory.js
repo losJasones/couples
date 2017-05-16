@@ -6,35 +6,24 @@
     var module = {};
     var self = module;
 
-    var allCards =[
-      { id: 0, name: 'javascript', img: 'javascript.jpg', isVisible: false },
-      { id: 1, name: 'grunt', img: 'grunt.jpg', isVisible: false },
-      { id: 2, name: 'node', img: 'node.jpg', isVisible: false },
-      { id: 3, name: 'gulp', img: 'gulp.jpg', isVisible: false },
-      { id: 4, name: 'angular', img: 'angular.jpg', isVisible: false },
-      { id: 5, name: 'css', img: 'css.jpg', isVisible: false },
-      { id: 6, name: 'html', img: 'html.jpg', isVisible: false },
-      { id: 7, name: 'sass', img: 'sass.jpg', isVisible: false },
-      { id: 8, name: 'javascript', img: 'javascript.jpg', isVisible: false },
-      { id: 9, name: 'grunt', img: 'grunt.jpg', isVisible: false },
-      { id: 10, name: 'node', img: 'node.jpg', isVisible: false },
-      { id: 11, name: 'gulp', img: 'gulp.jpg', isVisible: false },
-      { id: 12, name: 'angular', img: 'angular.jpg', isVisible: false },
-      { id: 13, name: 'css', img: 'css.jpg', isVisible: false },
-      { id: 14, name: 'html', img: 'html.jpg', isVisible: false },
-      { id: 15, name: 'sass', img: 'sass.jpg', isVisible: false }
-    ]; 
-    
-  /*  $http({
-    method: 'GET', 
-    url: 'localhost:3000/couples/cards'
-  }).success(function(data) {
-      $scope.seguro=data;
-  }).error(function(data) {
-      alert("Ha fallado la petición.");
-  });*/
+      module.getCards = function () {
+      $http({
+        url: 'http://localhost:8080/movies',
+        method: 'GET'
+      }).then(function (res) {
+        self.setCards(res.data);
+      }, function (error) {
+        console.log(error);
+        alert(error.data);
+      });
+    }
 
     module.remainingCards = {};
+
+    module.setCards = function(cards){
+      allCards=cards;
+      self.shuffleCards();
+    }
 
     module.getRemainingCards = function () {
       return self.remainingCards;

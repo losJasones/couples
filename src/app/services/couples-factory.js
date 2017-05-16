@@ -6,7 +6,7 @@
     var module = {};
     var self = module;
 
-    var allCards = [
+    var allCards =[
       { id: 0, name: 'javascript', img: 'javascript.jpg', isVisible: false },
       { id: 1, name: 'grunt', img: 'grunt.jpg', isVisible: false },
       { id: 2, name: 'node', img: 'node.jpg', isVisible: false },
@@ -23,9 +23,18 @@
       { id: 13, name: 'css', img: 'css.jpg', isVisible: false },
       { id: 14, name: 'html', img: 'html.jpg', isVisible: false },
       { id: 15, name: 'sass', img: 'sass.jpg', isVisible: false }
-    ];
+    ]; 
+    
+  /*  $http({
+    method: 'GET', 
+    url: 'localhost:3000/couples/cards'
+  }).success(function(data) {
+      $scope.seguro=data;
+  }).error(function(data) {
+      alert("Ha fallado la petición.");
+  });*/
 
-    module.remainingCards = angular.copy(allCards);
+    module.remainingCards = {};
 
     module.getRemainingCards = function () {
       return self.remainingCards;

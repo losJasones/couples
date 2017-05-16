@@ -12,6 +12,10 @@
     vm.goToAbout = function() {
       $state.go('aboutUs');
     };
+
+     vm.goToTopscores = function() {
+       $state.go('topscores');
+     };
   }
 
 })(angular);

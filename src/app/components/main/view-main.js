@@ -2,14 +2,16 @@
 
   angular.module('app').component('viewMain', {
     templateUrl:  'app/components/main/view-main-template.html',
-    controller: ['$state', viewMain],
+    controller: ['$state', 'couplesFactory', viewMain],
     controllerAs: 'viewMain'
   });
 
-  function viewMain($state) {
+  function viewMain($state, couplesFactory) {
     var vm = this;
 
-    vm.$onInit = function() {};
+    vm.$onInit = function() {
+      //couplesFactory.initializeNeededData();
+    };
 
     vm.actions = {};
 

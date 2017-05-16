@@ -1,41 +1,70 @@
-<article class="login green-background">
+<article class=" green-background">
+    <div class="row ">
+        <div class="col-md-6">
 
-    <br>
+            <span class="player-labels player-labels-header">NEW TO COUPLES? PLEASE REGISTER</span>
+            <br><br>
 
-    <div class="msg-error animated fadeIn" ng-show="viewLogin.showErrorMsg">
-        First name, last name and avatar are mandatory
+            <div class="msg-error animated fadeIn" ng-show="viewLogin.showErrorMsg">
+                First name, last name and avatar are mandatory
+            </div>
+
+            <p>
+                <label for="firstName" class="player-labels">First name</label>
+                <br>
+                <input type="text" id="firstName" ng-model="viewLogin.firstName" ng-class="{ 'has-error': !viewLogin.firstName && viewLogin.newformIsSend }">
+            </p>
+            <br>
+            <p>
+                <label for="lastName" class="player-labels">Last name</label>
+                <br>
+                <input type="text" id="lastName" ng-model="viewLogin.lastName" ng-class="{ 'has-error': !viewLogin.lastName && viewLogin.newFormIsSend }">
+            </p>
+            <br>
+            <p>
+                <label for="newEmail" class="player-labels">Email account</label>
+                <br>
+                <input type="text" id="newEmail" ng-model="viewLogin.newEmail" ng-class="{ 'has-error': !viewLogin.newEmail && viewLogin.newFormIsSend }">
+            </p>
+            <br>
+            <p>
+                <label for="avatar" class="player-labels">Avatar</label>
+                <br>
+
+                <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar1" name="avatar" id="radio1">
+                <label class="label_item" for="radio1"> <img class="avatar-img" src="app/styles/imgs/avatar1.jpg"> </label>
+
+                <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar2" name="avatar" id="radio2">
+                <label class="label_item" for="radio2"> <img class="avatar-img" src="app/styles/imgs/avatar2.jpg"> </label>
+
+                <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar3" name="avatar" id="radio3">
+                <label class="label_item" for="radio3"> <img class="avatar-img" src="app/styles/imgs/avatar3.jpg"> </label>
+        </p>
+        <p>
+            <div class="circle-green" ng-click="viewLogin.actions.goToGameFromNew()">
+                PLAY
+            </div>
+        </p>
     </div>
+    <div class="col-md-6">
 
-    <p>
-        <label for="firstName" class="player-labels">First name</label>
-        <br>
-        <input type="text" id="firstName" ng-model="viewLogin.firstName" ng-class="{ 'has-error': !viewLogin.firstName && viewLogin.formIsSend }">
-    </p>
-    <br>
-    <p>
-        <label for="lastName" class="player-labels">Last name</label>
-        <br>
-        <input type="text" id="lastName" ng-model="viewLogin.lastName" ng-class="{ 'has-error': !viewLogin.lastName && viewLogin.formIsSend }">
-    </p>
-    <br><br>
-    <p>
-        <label for="avatar" class="player-labels">Avatar</label>
-        <br>
-
-            <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar1" name="avatar" id="radio1">
-            <label class="label_item" for="radio1"> <img class="avatar-img" src="app/styles/imgs/avatar1.jpg"> </label>
-
-            <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar2" name="avatar" id="radio2">
-            <label class="label_item" for="radio2"> <img class="avatar-img" src="app/styles/imgs/avatar2.jpg"> </label>
-
-             <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar3" name="avatar" id="radio3">
-            <label class="label_item" for="radio3"> <img class="avatar-img" src="app/styles/imgs/avatar3.jpg"> </label>
-
+        <div class="msg-error animated fadeIn" ng-show="viewLogin.showOldErrorMsg">
+            Please, enter the email account you used other times for playing Couples
         </div>
-    </p>
-    <p>
-        <div class="circle-green" ng-click="viewLogin.actions.goToGame()">
-            PLAY
-        </div>
-    </p>
+      
+        <span class="player-labels player-labels-header">NOT NEW TO COUPLES? PLEASE ENTER YOUR EMAIL ACCOUNT</span>
+        <br><br>
+        <p>
+            <label for="oldEmail" class="player-labels">Email account</label>
+            <br>
+            <input type="text" id="oldEmail" ng-model="viewLogin.oldEmail" ng-class="{ 'has-error': !viewLogin.oldEmail && viewLogin.oldFormIsSend }">
+        </p>
+
+        <p>
+            <div class="circle-green" ng-click="viewLogin.actions.goToGameFromOld()">
+                PLAY
+            </div>
+        </p>
+    </div>
+    </div>
 </article>

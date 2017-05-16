@@ -6,7 +6,7 @@
     controllerAs: 'cardsList'
   });
 
-function cardsList($state, $timeout, couplesFactory) {
+  function cardsList($state, $timeout, couplesFactory) {
     var vm = this;
     vm.$onInit = function () {
       vm.remainingCards = couplesFactory.shuffleCards();

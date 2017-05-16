@@ -20,6 +20,12 @@
       template: '<view-login></view-login>'
     };
 
+    var topscores = {
+      name: 'topscores',
+      url: '/topscores',
+      template: '<view-topscores></view-topscores>'
+    };
+
     var about = {
       name: 'aboutUs',
       url: '/aboutUs',
@@ -35,6 +41,7 @@
 
     $stateProvider.state(main);
     $stateProvider.state(login);
+    $stateProvider.state(topscores);
     $stateProvider.state(about);
     $stateProvider.state(game);
 

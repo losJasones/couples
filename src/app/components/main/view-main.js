@@ -10,7 +10,7 @@
     var vm = this;
 
     vm.$onInit = function() {
-      //couplesFactory.initializeNeededData();
+      couplesFactory.getCards();
     };
 
     vm.actions = {};

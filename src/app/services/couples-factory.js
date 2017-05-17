@@ -8,7 +8,7 @@
 
     module.getCards = function () {
       $http({
-        url: 'http://localhost:8080/movies',
+        url: 'http://localhost:8080/couples/card',
         method: 'GET'
       }).then(function (res) {
         for (var i=0; i<res.data.length; i++){

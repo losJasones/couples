@@ -52,12 +52,13 @@ public class ScoreController {
         Iterable<Score> it = scoreRepository.findAll();
         Iterator<Score> iterator = it.iterator();
         while(iterator.hasNext()) {
-        	User user = userRepository.findByEmail(iterator.next().getEmail());        	
+        	Score score = (Score) iterator.next();
+        	User user = userRepository.findByEmail(score.getEmail());        	
             UserScore userScore = new UserScore();
             userScore.setEmail(user.getEmail());
             userScore.setName(user.getName());
             userScore.setLastname(user.getLastname());
-            userScore.setNumfails(iterator.next().getNumfails());
+            userScore.setNumfails(score.getNumfails());
             userScores.add(userScore);
             System.out.println(userScore.getEmail());
         }

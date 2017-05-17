@@ -1,0 +1,126 @@
+<!DOCTYPE unspecified PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script type="text/javascript">
+function call() {
+  var xhttp = new XMLHttpRequest();
+
+ xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       document.getElementById("result").innerHTML += this.responseText + "<br/>";
+       response = JSON.parse(this.responseText);
+      // document.getElementById("title").innerHTML = response.name;
+      // document.getElementById("author").innerHTML = response.author.name;
+    } else  if (this.readyState == 4) {    
+       document.getElementById("result").innerHTML += "Error:" + this.status + "<br/>";    
+       // document.getElementById("title").innerHTML = "";
+       //  document.getElementById("author").innerHTML = "";
+    }
+  };
+  
+ xhttp.open("GET", "http://localhost:8080/movies/"+ document.getElementById("idx").value, true);
+  xhttp.send();
+}
+
+function callAll() {
+	  var xhttp = new XMLHttpRequest();
+
+	 xhttp.onreadystatechange = function() {
+		 if (this.readyState == 4 && this.status == 200) {
+	       document.getElementById("result").innerHTML += this.responseText + "<br/>";
+	       response = JSON.parse(this.responseText) ;
+		 }
+	     
+	  };
+	  
+	 xhttp.open("GET", "http://localhost:8080/movies", true);
+	  xhttp.send();
+	}
+
+function borrar() {
+	  var xhttp = new XMLHttpRequest();
+
+	/* xhttp.onreadystatechange = function() {
+		 if (this.readyState == 4 && this.status == 200) {
+	      // document.getElementById("result").innerHTML += this.responseText + "<br/>";
+	       response = JSON.parse(this.responseText) ;
+		 }
+	     
+	  }; */
+	  
+	 xhttp.open("DELETE", "http://localhost:8080/movies/"+ document.getElementById("idx").value, true);
+	  xhttp.send();
+	}
+	
+function crear() {
+	  
+	var title = document.getElementById("title").value;
+	var cat = document.getElementById("cat").value;
+	var nam = document.getElementById("name").value;
+	var ag = document.getElementById("age").value;
+	
+	var xhttp = new XMLHttpRequest();	 
+	  
+	  xhttp.onreadystatechange = function() {
+			 if (this.readyState == 4 && this.status == 200) {
+		      // document.getElementById("result").innerHTML += this.responseText + "<br/>";
+		       response = JSON.parse(this.responseText) ;
+			 }		     
+		  };
+	  
+	 xhttp.open("POST", "http://localhost:8080/movies/", true);
+			// "title="+document.getElementById("title").value+"&cat="+ document.getElementById("cat").value+"&name="+ document.getElementById("name").value+"&age="+ document.getElementById("age").value, true);
+	 xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	xhttp.send(JSON.stringify({"titulo":title,"cat":cat,"director":{"name":nam,"age":ag}}) );	
+		
+	}
+
+function update() {
+	var title = document.getElementById("title").value;
+	var cat = document.getElementById("cat").value;
+	var nam = document.getElementById("name").value;
+	var ag = document.getElementById("age").value; 
+	
+	var xhttp = new XMLHttpRequest();	 
+	  
+	  xhttp.onreadystatechange = function() {
+			 if (this.readyState == 4 && this.status == 200) {
+		      // document.getElementById("result").innerHTML += this.responseText + "<br/>";
+		       response = JSON.parse(this.responseText) ;
+			 }		     
+		  };
+		//  var url="http://localhost:8080/movies/update?index="+document.getElementById("index").value+"&title="+document.getElementById("title").value+"&cat="+ document.getElementById("cat").value+"&name="+ document.getElementById("name").value+"&age="+ document.getElementById("age").value;
+	// console.log(url);
+		  
+		  xhttp.open("PUT", "http://localhost:8080/movies/"+document.getElementById("index").value, true);
+		  xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+			xhttp.send(JSON.stringify({"titulo":title,"cat":cat,"director":{"name":nam,"age":ag}}) );	
+			
+	}
+</script>
+</head>
+
+<body>
+
+Idx: <input type="text" id="idx"><button type="submit" onclick="call()">Ver</button>
+<button type="submit" onclick="callAll()">VerAll</button><button type="submit" onclick="borrar()">Borrar</button>
+
+
+<p id="result"> </p>
+
+<div>
+TituloPelicula: <input type="text" id="title"><br/>
+CategoriaPelicula: <input type="text" id="cat"><br/>
+NombreDirector: <input type="text" id="name"><br/>
+EdadDirector: <input type="text" id="age"><br/>
+<button type="submit" onclick="crear()">Añadir</button>
+<br/>
+<br/>
+id: <input type="text" id="index"><br/><button type="submit" onclick="update()">Actualizar</button>
+</div>
+
+
+
+
+</body>
+</html>

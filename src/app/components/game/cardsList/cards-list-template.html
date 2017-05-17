@@ -3,12 +3,9 @@
         <span class="guesses">Guessed: {{cardsList.guesses}}</span><span class="misses">Missed: {{cardsList.misses}}</span>
     </div>
 
-    <div class="msg-success" ng-show="cardsList.showSuccessMessage">CONGRATULATIONS!!!!</div>
+    <div class="msg-success" ng-show="cardsList.showSuccessMessage">FRIGOPIE PA TI!!!</div>
 
-    <cards-card ng-repeat="item in cardsList.remainingCards" item-card="item" ng-click="cardsList.actions.showCard(item.id)" >
-    </cards-card>
+    <cards-card ng-repeat="item in cardsList.remainingCards" item-card="item" ng-click="cardsList.actions.showCard(item.id)"></cards-card>
 
-    <p>
         <div class="circle-green" ng-click="cardsList.actions.startAgain()">Restart</div>
-    </p>
 </article>

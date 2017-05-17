@@ -17,7 +17,6 @@
         self.setCards(res.data);
       }, function (error) {
         console.log(error);
-        alert(error.data);
       });
     }
 

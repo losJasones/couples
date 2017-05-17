@@ -1,28 +1,28 @@
 --LIST
 
-SELECT MAX(s.numfails),u.NAME,u.EMAIL,u.AVATAR FROM SCORES s, USERS u WHERE s.USER_ID=u.ID;
+SELECT MAX(s.numfails),u.NAME,u.EMAIL,u.AVATAR FROM SCORES s, USERS u WHERE s.EMAIL=u.EMAIL;
 
 
 
 --GET USER
 
-SELECT s.numfails,u.NAME,u.EMAIL,u.AVATAR FROM SCORES s, USERS u WHERE s.USER_ID=u.ID;
+SELECT s.numfails,u.NAME,u.EMAIL,u.AVATAR FROM SCORES s, USERS u WHERE s.EMAIL=u.EMAIL;
 
 
 --CREATE
 INSERT INTO USERS (NAME, EMAIL,AVATAR) VALUES (?, ?,?);
-INSERT INTO SCORES (numfails, USERS_ID) VALUES ( ?, ?);
-INSERT INTO AVATAR (ID,PATH) VALUES (?, ?);
-INSERT INTO CARDS (ID, PATH,ISVISIBLE) VALUES (?, ?,?);
+INSERT INTO SCORES (numfails, EMAIL) VALUES ( ?, ?);
+INSERT INTO AVATAR (ID,NAME,IMG) VALUES (?, ?,?);
+INSERT INTO CARDS (ID, NAME,IMG,ISVISIBLE) VALUES (?, ?,?,?);
 
 --DELETE
 DELETE FROM SCORES WHERE id =?;
 DELETE FROM USERS WHERE id =?;
 
 --UPDATE
-SELECT USERS_ID FROM SCORES WHERE id=?;
+SELECT s FROM SCORES s WHERE EMAIL=?;
 UPDATE USERS SET NAME=?,EMAIL=?,AVATAR=? WHERE id=?;
-UPDATE SCORES SET numfails=? WHERE id=?;
+UPDATE SCORES SET numfails=? WHERE EMAIL=?;
 
 
 --CREATE MASTER DATA CARDS
@@ -44,6 +44,6 @@ INSERT INTO card (id, img, is_visible, name) VALUES (14, "html.jpg", "false", "h
 INSERT INTO card (id, img, is_visible, name) VALUES (15, "sass.jpg", "false", "sass");
 
 --CREATE MASTER DATA AVATAR
-INSERT INTO avatar (id,name,img) VALUES (1,"avatar1","avatar1.jpg");
-INSERT INTO avatar (id,name,img) VALUES (2,"avatar2","avatar2.jpg");
-INSERT INTO avatar (id,name,img) VALUES (3,"avatar3","avatar3.jpg");
+INSERT INTO avatar (id,name,img) VALUES (1,"avatar1","avatar1.png");
+INSERT INTO avatar (id,name,img) VALUES (2,"avatar2","avatar2.png");
+INSERT INTO avatar (id,name,img) VALUES (3,"avatar3","avatar3.png");

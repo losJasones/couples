@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-@Entity(name="users")
+@Entity
 @Table (name="users", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "email")})
 public class User {
@@ -16,6 +16,7 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String name ;
+	private String lastname ;
 	private String email;
 	private int avatar;
 	
@@ -45,6 +46,12 @@ public class User {
 	}
 	public void setAvatar(int avatar) {
 		this.avatar = avatar;
+	}
+	public String getLastname() {
+		return lastname;
+	}
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 	
 

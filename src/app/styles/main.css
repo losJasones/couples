@@ -93,7 +93,7 @@
   display: none;
 }
 
-.label_item {
+.label_item{
   opacity: 1;
 }
 
@@ -101,7 +101,7 @@
   opacity: 0.5;
 }
 
-.msg-error {
+.msg-error{
   margin: 1em;
   padding: 5px;
   background-color: #fcfcfc;
@@ -148,13 +148,11 @@
     position: fixed;
 }
 
-
 .header-game-avatar{
   height: 40px;
   width: 40px;
   border-radius: 50px;
 }
-
 
 .player-header{
   vertical-align: middle;

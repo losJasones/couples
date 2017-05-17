@@ -5,6 +5,8 @@
   function couplesFactory($http) {
     var module = {};
     var self = module;
+    var allCards={};
+    var allAvatars={};
 
     module.getCards = function () {
       $http({
@@ -18,6 +20,28 @@
       }, function (error) {
         console.log(error);
       });
+    }
+
+    module.getAvatars = function () {
+      $http({
+        url: 'http://localhost:8080/couples/avatar',
+        method: 'GET'
+      }).then(function (res) {
+        for (var i=0; i<res.data.length; i++){
+          res.data[i].isVisible=false;
+        }    
+        self.setAvatars(res.data);
+      }, function (error) {
+        console.log(error);
+      });
+    }
+
+    module.setAvatars= function(avatars){
+      allAvatars=avatars;
+    }
+
+    module.getAvatars= function(){
+      return allAvatars;
     }
 
     module.remainingCards = {};

@@ -11,6 +11,7 @@
 
     vm.$onInit = function() {
       couplesFactory.getCards();
+      couplesFactory.getAvatars();
     };
 
     vm.actions = {};

@@ -26,24 +26,41 @@ UPDATE SCORES SET numfails=? WHERE EMAIL=?;
 
 
 --CREATE MASTER DATA CARDS
-INSERT INTO card (id, img, is_visible, name) VALUES (0, "javascript.jpg", "false", "javascript");
-INSERT INTO card (id, img, is_visible, name) VALUES (1, "grunt.jpg", "false", "grunt");
-INSERT INTO card (id, img, is_visible, name) VALUES (2, "node.jpg", "false", "node");
-INSERT INTO card (id, img, is_visible, name) VALUES (3, "gulp.jpg", "false", "gulp");
-INSERT INTO card (id, img, is_visible, name) VALUES (4, "angular.jpg", "false", "angular");
-INSERT INTO card (id, img, is_visible, name) VALUES (5, "css.jpg", "false", "css");
-INSERT INTO card (id, img, is_visible, name) VALUES (6, "html.jpg", "false", "html");
-INSERT INTO card (id, img, is_visible, name) VALUES (7, "sass.jpg", "false", "sass");
-INSERT INTO card (id, img, is_visible, name) VALUES (8, "javascript.jpg", "false", "javascript");
-INSERT INTO card (id, img, is_visible, name) VALUES (9, "grunt.jpg", "false", "grunt");
-INSERT INTO card (id, img, is_visible, name) VALUES (10, "node.jpg", "false", "node");
-INSERT INTO card (id, img, is_visible, name) VALUES (11, "gulp.jpg", "false", "gulp");
-INSERT INTO card (id, img, is_visible, name) VALUES (12, "angular.jpg", "false", "angular");
-INSERT INTO card (id, img, is_visible, name) VALUES (13, "css.jpg", "false", "css");
-INSERT INTO card (id, img, is_visible, name) VALUES (14, "html.jpg", "false", "html");
-INSERT INTO card (id, img, is_visible, name) VALUES (15, "sass.jpg", "false", "sass");
+INSERT INTO cards (id, img, is_visible, name) VALUES (0, "javascript.jpg", "false", "javascript");
+INSERT INTO cards (id, img, is_visible, name) VALUES (1, "grunt.jpg", "false", "grunt");
+INSERT INTO cards (id, img, is_visible, name) VALUES (2, "node.jpg", "false", "node");
+INSERT INTO cards (id, img, is_visible, name) VALUES (3, "gulp.jpg", "false", "gulp");
+INSERT INTO cards (id, img, is_visible, name) VALUES (4, "angular.jpg", "false", "angular");
+INSERT INTO cards (id, img, is_visible, name) VALUES (5, "css.jpg", "false", "css");
+INSERT INTO cards (id, img, is_visible, name) VALUES (6, "html.jpg", "false", "html");
+INSERT INTO cards (id, img, is_visible, name) VALUES (7, "sass.jpg", "false", "sass");
+INSERT INTO cards (id, img, is_visible, name) VALUES (8, "javascript.jpg", "false", "javascript");
+INSERT INTO cards (id, img, is_visible, name) VALUES (9, "grunt.jpg", "false", "grunt");
+INSERT INTO cards (id, img, is_visible, name) VALUES (10, "node.jpg", "false", "node");
+INSERT INTO cards (id, img, is_visible, name) VALUES (11, "gulp.jpg", "false", "gulp");
+INSERT INTO cards (id, img, is_visible, name) VALUES (12, "angular.jpg", "false", "angular");
+INSERT INTO cards (id, img, is_visible, name) VALUES (13, "css.jpg", "false", "css");
+INSERT INTO cards (id, img, is_visible, name) VALUES (14, "html.jpg", "false", "html");
+INSERT INTO cards (id, img, is_visible, name) VALUES (15, "sass.jpg", "false", "sass");
 
 --CREATE MASTER DATA AVATAR
-INSERT INTO avatar (id,name,img) VALUES (1,"avatar1","avatar1.png");
-INSERT INTO avatar (id,name,img) VALUES (2,"avatar2","avatar2.png");
-INSERT INTO avatar (id,name,img) VALUES (3,"avatar3","avatar3.png");
+INSERT INTO avatars (id,name,img) VALUES (1,"avatar1","avatar1.png");
+INSERT INTO avatars (id,name,img) VALUES (2,"avatar2","avatar2.png");
+INSERT INTO avatars (id,name,img) VALUES (3,"avatar3","avatar3.png");
+
+
+
+----INSERT EN USERS
+INSERT INTO USERS (NAME, LASTNAME,EMAIL,AVATAR) VALUES ("Aida","Gomez","aida@email.com",2);
+INSERT INTO USERS (NAME, LASTNAME,EMAIL,AVATAR) VALUES ("Jacobo","Martin","jacobo@email.com",3);
+INSERT INTO USERS (NAME, LASTNAME,EMAIL,AVATAR) VALUES ("Miguel","Fontaneda","miguel@email.com",1);
+INSERT INTO USERS (NAME, LASTNAME,EMAIL,AVATAR) VALUES ("Jose","Bermejo","jose@email.com",1);
+
+----INSERT EN SCORES
+INSERT INTO SCORES (numfails, email) VALUES ( 1,"jose@email.com");
+INSERT INTO SCORES (numfails, email) VALUES ( 100,"jose@email.com");
+INSERT INTO SCORES (numfails, email) VALUES ( 100,"aida@email.com");
+INSERT INTO SCORES (numfails, email) VALUES ( 10,"jose@email.com");
+INSERT INTO SCORES (numfails, email) VALUES ( 9,"miguel@email.com");
+INSERT INTO SCORES (numfails, email) VALUES ( 9,"jacobo@email.com");
+INSERT INTO SCORES (numfails, email) VALUES ( 7,"aida@email.com");

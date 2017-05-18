@@ -2,8 +2,10 @@ package couples.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table (name="avatars")
 public class Avatar {
 	@Id		
 	private Integer id;

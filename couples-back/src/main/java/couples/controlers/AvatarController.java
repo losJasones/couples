@@ -12,33 +12,26 @@ import org.springframework.web.bind.annotation.RestController;
 import couples.model.Avatar;
 import couples.repositories.*;
 
-
-
-
 @RestController
-@RequestMapping("/couples/avatar")
+@RequestMapping("/couples/avatars")
 public class AvatarController {
 
-    @Autowired
-    AvatarRepository repository;   
-    
+	@Autowired
+	AvatarRepository repository;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Avatar> list() {
-        List<Avatar> avatars = new ArrayList<>();
+	@RequestMapping(method = RequestMethod.GET)
+	public List<Avatar> list() {
+		List<Avatar> avatars = new ArrayList<>();
 
-        Iterable<Avatar> it = repository.findAll();
-        
-        Iterator<Avatar> iterator = it.iterator();
-        
-        while(iterator.hasNext()) {
-        	avatars.add(iterator.next());
-        }
+		Iterable<Avatar> it = repository.findAll();
 
-        return avatars;
-    }
-    
-    }
+		Iterator<Avatar> iterator = it.iterator();
 
-    
+		while (iterator.hasNext()) {
+			avatars.add(iterator.next());
+		}
 
+		return avatars;
+	}
+
+}

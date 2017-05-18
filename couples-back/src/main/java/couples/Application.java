@@ -21,10 +21,9 @@ public class Application {
              * CORS configuration
              */
             @Override
-            public void addCorsMappings(
-                final CorsRegistry registry){
-              
-                registry.addMapping("/couples").allowedOrigins("http://localhost:3000");
+            public void addCorsMappings(final CorsRegistry registry){
+                registry.addMapping("/couples/cards").allowedOrigins("http://localhost:3000");
+                registry.addMapping("/couples/avatars").allowedOrigins("http://localhost:3000");
             }
         };
     }

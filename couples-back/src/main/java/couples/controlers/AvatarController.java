@@ -16,14 +16,14 @@ import couples.repositories.*;
 
 
 @RestController
-@RequestMapping("/couples/avatar")
+@RequestMapping("/couples")
 public class AvatarController {
 
     @Autowired
     AvatarRepository repository;   
     
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(path="/avatars", method = RequestMethod.GET)
     public List<Avatar> list() {
         List<Avatar> avatars = new ArrayList<>();
 

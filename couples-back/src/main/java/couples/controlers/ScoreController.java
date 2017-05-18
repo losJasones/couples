@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import couples.model.Score;
 import couples.model.User;
-import couples.model.UserScore;
+
 import couples.repositories.ScoreRepository;
 import couples.repositories.UserRepository;
 
@@ -22,7 +22,7 @@ import couples.repositories.UserRepository;
 
 
 @RestController
-@RequestMapping("/couples/score")
+@RequestMapping("/couples")
 public class ScoreController {
 
     @Autowired
@@ -31,12 +31,10 @@ public class ScoreController {
     private UserRepository userRepository;   
     
 
-    @RequestMapping(method = RequestMethod.POST)
-    public Object create(@RequestBody Score score) {
+    @RequestMapping(path="/score", method = RequestMethod.POST)
+    public void create(@RequestBody Score score) {
 
         score = scoreRepository.save(score);
-
-        return Collections.singletonMap("id", score.getId());
     }
 
    /* @RequestMapping(method = RequestMethod.GET,value="/topten")
@@ -44,26 +42,20 @@ public class ScoreController {
     	return findByTen();
     }*/
     
-    @RequestMapping(method = RequestMethod.GET)
-    public List<UserScore> list() {
-        List<UserScore> userScores = new ArrayList<UserScore>();
+    
+    
+    @RequestMapping(path="/scores", method = RequestMethod.GET)
+    public List<Score> list() {
+        List<Score> scores = new ArrayList<>();
         
         
         Iterable<Score> it = scoreRepository.findAll();
         Iterator<Score> iterator = it.iterator();
         while(iterator.hasNext()) {
-        	Score score = (Score) iterator.next();
-        	User user = userRepository.findByEmail(score.getEmail());        	
-            UserScore userScore = new UserScore();
-            userScore.setEmail(user.getEmail());
-            userScore.setName(user.getName());
-            userScore.setLastname(user.getLastname());
-            userScore.setNumfails(score.getNumfails());
-            userScores.add(userScore);
-            System.out.println(userScore.getEmail());
+        	scores.add(iterator.next());
         }
 
-        return userScores;
+        return scores;
     }
 }
 

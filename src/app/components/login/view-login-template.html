@@ -27,13 +27,13 @@
             <p>
                 <label for="avatar" class="player-labels">Avatar</label>
                 <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar1" name="avatar" id="radio1">
-                <label class="label_item" for="radio1"> <img class="avatar-img" src="app/styles/imgs/avatar1.png"> </label>
+                <label class="label_item" for="radio1"> <img class="avatar-img" ng-src="app/styles/imgs/{{viewLogin.actions.getAvatar(1)}}"> </label>
 
                <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar2" name="avatar" id="radio2">
-                <label class="label_item" for="radio2"> <img class="avatar-img" src="app/styles/imgs/avatar2.png"> </label>
+                <label class="label_item" for="radio2"> <img class="avatar-img" ng-src="app/styles/imgs/{{viewLogin.actions.getAvatar(2)}}"> </label>
 
                <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar3" name="avatar" id="radio3">
-                <label class="label_item" for="radio3"> <img class="avatar-img" src="app/styles/imgs/avatar3.png"> </label>
+                <label class="label_item" for="radio3"> <img class="avatar-img" ng-src="app/styles/imgs/{{viewLogin.actions.getAvatar(3)}}"> </label>
             </p>
 
             <p>

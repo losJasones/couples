@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import couples.model.Avatar;
+import couples.model.Score;
 import couples.model.User;
 import couples.repositories.UserRepository;
 
@@ -21,29 +22,32 @@ import couples.repositories.UserRepository;
 
 
 @RestController
-@RequestMapping("/couples/user")
+@RequestMapping("/couples")
 public class UserController {
 
     @Autowired
     UserRepository repository;   
     
 
-    @RequestMapping(method = RequestMethod.POST)
-    public Object create(@RequestBody User user) {
+    @RequestMapping(path="/user", method = RequestMethod.POST)
+    public void create(@RequestBody User user) {
     	/*if (repository.findByEmail(user.getEmail())==null)
     	{*/
+    		List<Score> scores = new ArrayList<>();
+    		user.setScores(scores);
     		user = repository.save(user);
-    		return Collections.singletonMap("id", user.getId());
     	/*}
     	return "EMAIL REPETIDO";*///aqui deberia ir un mensaje de error email repetido
     }
     
-    @RequestMapping(method = RequestMethod.GET, value = "/email/{email:.+}")
-	public User getemail(@PathVariable String email) {
+//    @RequestMapping(method = RequestMethod.GET, value = "/user/{email:.+}")
+    @RequestMapping(method = RequestMethod.GET, value = "/user/{email}")
+	public User getUser(@PathVariable String email) {
     	
     	System.out.println(email);
     	
-		return repository.findByEmail(email);
+//		return repository.findByEmail(email);
+    	return repository.findOne(email);
 	}
     /*@RequestMapping(method = RequestMethod.GET, value = "/{id}")
 	public User get(@PathVariable Integer id) {
@@ -52,7 +56,7 @@ public class UserController {
 
 		return b;
 	}*/
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(path="/users", method = RequestMethod.GET)
     public List<User> list() {
         List<User> users = new ArrayList<>();
 

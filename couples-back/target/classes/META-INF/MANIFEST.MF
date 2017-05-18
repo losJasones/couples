@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: couples-back
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: formacion
+Built-By: Jake
 Implementation-Vendor-Id: com.losJasones.couples-back
-Build-Jdk: 1.8.0_131
+Build-Jdk: 1.8.0_111
 Implementation-URL: http://projects.spring.io/spring-boot/couples-back
  /
 Created-By: Maven Integration for Eclipse

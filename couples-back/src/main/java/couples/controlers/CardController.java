@@ -16,7 +16,7 @@ import couples.repositories.*;
 
 
 @RestController
-@RequestMapping("/couples/card")
+@RequestMapping("/couples")
 public class CardController {
 
     @Autowired
@@ -25,7 +25,7 @@ public class CardController {
 
    
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(path="/cards",method = RequestMethod.GET)
     public List<Card> list() {
         List<Card> cards = new ArrayList<>();
 

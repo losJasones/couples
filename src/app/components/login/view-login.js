@@ -18,22 +18,28 @@
 
     vm.actions = {};
 
+    vm.actions.getAvatar=function(id){
+      console.log(couplesFactory.getAvatars())
+      return couplesFactory.getAvatars()[id-1].img;
+    }
+
     vm.actions.goToGameFromNew = function () {
       vm.showOldErrorMsg=false;
       vm.oldFormIsSend = false;
       vm.oldEmail='';
       var newPlayer = {
-        firstName: vm.firstName,
-        lastName: vm.lastName,
-        newEmail: vm.newEmail,
-        avatar: vm.avatar,
-      };
+          firstName: vm.firstName, 
+          lastName: vm.lastName,
+          email: vm.newEmail,
+          avatar: vm.avatar
+        }
       vm.newFormIsSend = true;
 
       if (!newPlayer.firstName || !newPlayer.lastName || !newPlayer.avatar || !newPlayer.newEmail) {
         vm.showErrorMsg = true;
       } else {
         vm.showErrorMsg = false;
+        couplesFactory.setUser(vm.firstName, vm.lastName, vm.newEmail,vm.avatar);
       }
 
       if (!vm.showErrorMsg) {

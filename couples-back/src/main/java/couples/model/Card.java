@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class Card {
 	
 	@Id		
-	private Integer id;	
+	private int id;	
 	private String name;
 	private String img;
 	private String isVisible;

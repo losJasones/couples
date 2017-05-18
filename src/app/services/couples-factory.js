@@ -5,50 +5,80 @@
   function couplesFactory($http) {
     var module = {};
     var self = module;
-    var allCards={};
-    var allAvatars={};
+    var allCards = {};
+    module.allAvatars = {};
 
-    module.getCards = function () {
+    module.initCards = function () {
       $http({
-        url: 'http://localhost:8080/couples/card',
+        url: 'http://localhost:8080/couples/cards',
         method: 'GET'
       }).then(function (res) {
-        for (var i=0; i<res.data.length; i++){
-          res.data[i].isVisible=false;
-        }    
+        for (var i = 0; i < res.data.length; i++) {
+          res.data[i].isVisible = false;
+        }
         self.setCards(res.data);
       }, function (error) {
         console.log(error);
       });
     }
 
-    module.getAvatars = function () {
+    module.initAvatars = function () {
       $http({
-        url: 'http://localhost:8080/couples/avatar',
+        url: 'http://localhost:8080/couples/avatars',
         method: 'GET'
       }).then(function (res) {
-        for (var i=0; i<res.data.length; i++){
-          res.data[i].isVisible=false;
-        }    
         self.setAvatars(res.data);
       }, function (error) {
         console.log(error);
       });
     }
 
-    module.setAvatars= function(avatars){
-      allAvatars=avatars;
+    module.setUser = function (_firstName, _lastName, _email, _avatar) {
+      let user = self.getuser(email);
+      if (!user) {
+        $http({
+          url: 'http://localhost:8080/couples/user',
+          method: 'POST',
+          data: {
+            email: _email,
+            firstName: _firstName,
+            lastName: _lastName,
+            avatar: _avatar
+          }
+        }).then(function (res) {
+          self.setAvatars(res.data);
+          return true;
+        }, function (error) {
+          console.log(error);
+          return false;
+        });
+      }else return false;
     }
 
-    module.getAvatars= function(){
-      return allAvatars;
+    module.getUser = function (_email) {
+        $http({
+          url: 'http://localhost:8080/couples/user/'+_email,
+          method: 'GET',
+        }).then(function (res) {
+          return res.data;
+        }, function (error) {
+          console.log(error);
+        });
+    }
+
+    module.setAvatars = function (avatars) {
+      self.allAvatars = avatars;
+    }
+
+    module.getAvatars = function () {
+      return self.allAvatars;
     }
 
     module.remainingCards = {};
 
-    module.setCards = function(cards){
-      allCards=cards;
-      self.remainingCards=angular.copy(allCards);
+    module.setCards = function (cards) {
+      allCards = cards;
+      self.remainingCards = angular.copy(allCards);
     }
 
     module.getRemainingCards = function () {
@@ -84,7 +114,7 @@
         if (currentCard.isVisible) {
           if (!isFirstFound) {
             isFirstFound = true;
-            firstVisibleCard=currentCard;
+            firstVisibleCard = currentCard;
           } else if (firstVisibleCard.name === currentCard.name) {
             return true;
           }

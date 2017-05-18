@@ -10,7 +10,8 @@
     var vm = this;
 
     vm.$onInit = function() {
-      couplesFactory.getCards();
+      couplesFactory.initCards();
+      couplesFactory.initAvatars();
     };
 
     vm.actions = {};

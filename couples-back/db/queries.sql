@@ -1,30 +1,3 @@
---LIST
-
-SELECT MAX(s.numfails),u.NAME,u.EMAIL,u.AVATAR FROM SCORES s, USERS u WHERE s.EMAIL=u.EMAIL;
-
-
-
---GET USER
-
-SELECT s.numfails,u.NAME,u.EMAIL,u.AVATAR FROM SCORES s, USERS u WHERE s.EMAIL=u.EMAIL;
-
-
---CREATE
-INSERT INTO USERS (NAME, EMAIL,AVATAR) VALUES (?, ?,?);
-INSERT INTO SCORES (numfails, EMAIL) VALUES ( ?, ?);
-INSERT INTO AVATAR (ID,NAME,IMG) VALUES (?, ?,?);
-INSERT INTO CARDS (ID, NAME,IMG,ISVISIBLE) VALUES (?, ?,?,?);
-
---DELETE
-DELETE FROM SCORES WHERE id =?;
-DELETE FROM USERS WHERE id =?;
-
---UPDATE
-SELECT s FROM SCORES s WHERE EMAIL=?;
-UPDATE USERS SET NAME=?,EMAIL=?,AVATAR=? WHERE id=?;
-UPDATE SCORES SET numfails=? WHERE EMAIL=?;
-
-
 --CREATE MASTER DATA CARDS
 INSERT INTO cards (id, img, is_visible, name) VALUES (0, "javascript.jpg", "false", "javascript");
 INSERT INTO cards (id, img, is_visible, name) VALUES (1, "grunt.jpg", "false", "grunt");
@@ -51,16 +24,14 @@ INSERT INTO avatars (id,name,img) VALUES (3,"avatar3","avatar3.png");
 
 
 ----INSERT EN USERS
-INSERT INTO USERS (FIRST_NAME, LAST_NAME,EMAIL,AVATAR_ID) VALUES ("Aida","apellido","aida@email.com",2);
-INSERT INTO USERS (FIRST_NAME, LAST_NAME,EMAIL,AVATAR_ID) VALUES ("Jacobo","apellido","jacobo@email.com",3);
-INSERT INTO USERS (FIRST_NAME, LAST_NAME,EMAIL,AVATAR_ID) VALUES ("Miguel","apellido","miguel@email.com",1);
-INSERT INTO USERS (FIRST_NAME, LAST_NAME,EMAIL,AVATAR_ID) VALUES ("Jose","apellido","jose@email.com",1);
+INSERT INTO USERS (FIRST_NAME, LAST_NAME,EMAIL,AVATAR_ID) VALUES ("Aida","Gomez","aida@email.com",2);
+INSERT INTO USERS (FIRST_NAME, LAST_NAME,EMAIL,AVATAR_ID) VALUES ("Jacobo","Martinez","jacobo@email.com",3);
+INSERT INTO USERS (FIRST_NAME, LAST_NAME,EMAIL,AVATAR_ID) VALUES ("Miguel","Fontaneda","miguel@email.com",1);
+INSERT INTO USERS (FIRST_NAME, LAST_NAME,EMAIL,AVATAR_ID) VALUES ("Jose","Bermejo","jose@email.com",1);
 
 ----INSERT EN SCORES
-INSERT INTO SCORES (numfails, email) VALUES ( 1,"jose@email.com");
-INSERT INTO SCORES (numfails, email) VALUES ( 100,"jose@email.com");
-INSERT INTO SCORES (numfails, email) VALUES ( 100,"aida@email.com");
-INSERT INTO SCORES (numfails, email) VALUES ( 10,"jose@email.com");
-INSERT INTO SCORES (numfails, email) VALUES ( 9,"miguel@email.com");
-INSERT INTO SCORES (numfails, email) VALUES ( 9,"jacobo@email.com");
-INSERT INTO SCORES (numfails, email) VALUES ( 7,"aida@email.com");
+INSERT INTO SCORES (numfails) VALUES ( 1);
+INSERT INTO SCORES (numfails) VALUES ( 10);
+INSERT INTO SCORES (numfails) VALUES ( 15);
+INSERT INTO SCORES (numfails) VALUES ( 20);
+INSERT INTO SCORES (numfails) VALUES ( 10);

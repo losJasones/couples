@@ -1,8 +1,6 @@
 package couples.controlers;
 
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,49 +11,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import couples.model.Score;
+import couples.model.User;
+
 import couples.repositories.ScoreRepository;
 
-
-
-
 @RestController
-@RequestMapping("/couples/score")
+@RequestMapping("/couples")
 public class ScoreController {
 
-    @Autowired
-    ScoreRepository repository;   
-    
+	@Autowired
+	private ScoreRepository scoreRepository;
 
-    @RequestMapping(method = RequestMethod.POST)
-    public Object create(@RequestBody Score score) {
+	@RequestMapping(path = "/score", method = RequestMethod.POST)
+	public Object create(@RequestBody Score score) {
+		List<User> user = new ArrayList<>();
+		score.setUsers(user);
+		score = scoreRepository.save(score);
+		return true;
+	}
 
-        score = repository.save(score);
+	@RequestMapping(path = "/topTenScores", method = RequestMethod.GET)
+	public List<Score> top() {
+		List<Score> scores = new ArrayList<>();
+		Iterable<Score> it = scoreRepository.getOrderByNumfails();
+		Iterator<Score> iterator = it.iterator();
+		int cont = 1;
+		while (iterator.hasNext() && cont < 11) {
+			scores.add(iterator.next());
+			cont++;
+		}
 
-        return Collections.singletonMap("id", score.getId());
-    }
+		return scores;
+	}
 
-    @RequestMapping(method = RequestMethod.GET)
-    /*public List<Score> findByTen(){
-    	return findByTen();
-    }*/
-    
-    public List<Score> list() {
-        List<Score> score = new ArrayList<>();
-
-        Iterable<Score> it = repository.findAll();
-        
-        Iterator<Score> iterator = it.iterator();
-        
-        while(iterator.hasNext()) {
-            score.add(iterator.next());
-        }
-
-        return score;
-    }
 }
-
-    
-    
-    
-    
-

@@ -1,47 +1,50 @@
 package couples.model;
 
+import java.util.List;
 
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
-
-
-
-@Entity(name="scores")
+@Entity
+@Table(name = "scores")
 public class Score {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 	private int numfails;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="USERS_ID")
-	private User user;
-	
-	
-	public int getId() {
+	@ManyToMany
+	@JoinTable(name = "join_table", joinColumns = { @JoinColumn(name = "score_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "user_id") })
+	private List<User> users;
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(long id) {
 		this.id = id;
 	}
+
 	public int getNumfails() {
 		return numfails;
 	}
+
 	public void setNumfails(int numfails) {
 		this.numfails = numfails;
-	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 }

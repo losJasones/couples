@@ -1,0 +1,65 @@
+<article>
+    <div class="row ">
+        <div class="col-xs-6">
+
+           <p class="player-labels">SIGN UP</p>
+
+            <div class="msg-error animated fadeIn" ng-show="viewLogin.showErrorMsg">
+                First name, last name and avatar are required
+            </div>
+
+            <p>
+                <label for="firstName" class="player-labels">First name</label>
+                <input type="text" id="firstName" ng-model="viewLogin.firstName" ng-class="{ 'has-error': !viewLogin.firstName && viewLogin.newformIsSend }">
+            </p>
+
+            <p>
+                <label for="lastName" class="player-labels">Last name</label>
+                <input type="text" id="lastName" ng-model="viewLogin.lastName" ng-class="{ 'has-error': !viewLogin.lastName && viewLogin.newFormIsSend }">
+            </p>
+
+            <p>
+                <label for="newEmail" class="player-labels">Email account</label>
+
+                <input type="text" id="newEmail" ng-model="viewLogin.newEmail" ng-class="{ 'has-error': !viewLogin.newEmail && viewLogin.newFormIsSend }">
+            </p>
+
+            <p>
+                <label for="avatar" class="player-labels">Avatar</label>
+                <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar1" name="avatar" id="radio1">
+                <label class="label_item" for="radio1"> <img class="avatar-img" src="app/styles/imgs/avatar1.png"> </label>
+
+               <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar2" name="avatar" id="radio2">
+                <label class="label_item" for="radio2"> <img class="avatar-img" src="app/styles/imgs/avatar2.png"> </label>
+
+               <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar3" name="avatar" id="radio3">
+                <label class="label_item" for="radio3"> <img class="avatar-img" src="app/styles/imgs/avatar3.png"> </label>
+            </p>
+
+            <p>
+            <button ng-click="viewLogin.actions.goToGameFromNew()" type="button" class="btn btn-default">PLAY</button>
+            </p>
+
+        </div>
+
+        <div class="col-xs-6">
+          
+            <p class="player-labels">SIGN IN</p>
+
+            <div class="msg-error animated fadeIn" ng-show="viewLogin.showOldErrorMsg">
+                Please, enter your email account
+            </div>
+
+            <p>
+                <label for="oldEmail" class="player-labels">Email account</label>
+                <input type="text" id="oldEmail" ng-model="viewLogin.oldEmail" ng-class="{ 'has-error': !viewLogin.oldEmail && viewLogin.oldFormIsSend }">
+            </p>
+
+            <p>
+                <button ng-click="viewLogin.actions.goToGameFromOld()" type="button" class="btn btn-default">PLAY
+                </button>
+            </p>
+
+        </div>
+    </div>
+</article>

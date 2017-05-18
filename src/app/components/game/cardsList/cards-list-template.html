@@ -1,11 +1,13 @@
 <article>
     <div class="game-subheader">
-        <span class="guesses">Guessed: {{cardsList.guesses}}</span><span class="misses">Missed: {{cardsList.misses}}</span>
+        <div class="guesses-box"><span>Guessed: {{cardsList.guesses}}</span></div>
+        <div class="misses-box"><span>Missed: {{cardsList.misses}}</span></div>
     </div>
 
     <div class="msg-success" ng-show="cardsList.showSuccessMessage">FRIGOPIE PA TI!!!</div>
 
     <cards-card ng-repeat="item in cardsList.remainingCards" item-card="item" ng-click="cardsList.actions.showCard(item.id)"></cards-card>
-
-        <div class="circle-green" ng-click="cardsList.actions.startAgain()">Restart</div>
+    	<div>
+        	<button class="btn btn-default" ng-click="cardsList.actions.startAgain()" type="button">RESTART</button>
+        </div>
 </article>

@@ -24,7 +24,7 @@ public class Application {
             public void addCorsMappings(
                 final CorsRegistry registry){
               
-                registry.addMapping("/couples").allowedOrigins("http://localhost:3000");
+                registry.addMapping("/couples/card").allowedOrigins("http://localhost:3000");
             }
         };
     }

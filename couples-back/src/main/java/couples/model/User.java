@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,22 +19,12 @@ public class User {
 	private String email;
 
 	private String firstName;
-	private String lastName;
-	@ManyToMany
-	@JoinTable(name = "join_table", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "score_id") })
-	private List<Score> scores;
+	private String lastName;	
+	
 	@ManyToOne
 	@JoinColumn(name = "avatar_id")
 	private Avatar avatar;
 
-	public List<Score> getScores() {
-		return scores;
-	}
-
-	public void setScores(List<Score> scores) {
-		this.scores = scores;
-	}
 
 	public String getFirstName() {
 		return firstName;

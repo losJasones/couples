@@ -24,14 +24,10 @@ public class UserController {
 	UserRepository repository;
 
 	@RequestMapping(path = "/user", method = RequestMethod.POST)
-	public Object create(@RequestBody User user) {
-		if (repository.findOne(user.getEmail()) == null) {
-			List<Score> scores = new ArrayList<>();
-			user.setScores(scores);
+	public void create(@RequestBody User user) {
+		
 			user = repository.save(user);
-			return true;
-		}
-		return false;
+			
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/user/{email:.+}")

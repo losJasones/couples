@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,18 +17,19 @@ import javax.persistence.Table;
 public class Score {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private int id;
 	private int numfails;
-	@ManyToMany
-	@JoinTable(name = "join_table", joinColumns = { @JoinColumn(name = "score_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "user_id") })
-	private List<User> users;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")	
+	private User users;
 
-	public List<User> getUsers() {
+	
+	public User getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(User users) {
 		this.users = users;
 	}
 
@@ -35,7 +37,7 @@ public class Score {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

@@ -51,10 +51,10 @@ INSERT INTO avatars (id,name,img) VALUES (3,"avatar3","avatar3.png");
 
 
 ----INSERT EN USERS
-INSERT INTO USERS (NAME, LASTNAME,EMAIL,AVATAR) VALUES ("Aida","Gomez","aida@email.com",2);
-INSERT INTO USERS (NAME, LASTNAME,EMAIL,AVATAR) VALUES ("Jacobo","Martin","jacobo@email.com",3);
-INSERT INTO USERS (NAME, LASTNAME,EMAIL,AVATAR) VALUES ("Miguel","Fontaneda","miguel@email.com",1);
-INSERT INTO USERS (NAME, LASTNAME,EMAIL,AVATAR) VALUES ("Jose","Bermejo","jose@email.com",1);
+INSERT INTO USERS (FIRST_NAME, LAST_NAME,EMAIL,AVATAR_ID) VALUES ("Aida","apellido","aida@email.com",2);
+INSERT INTO USERS (FIRST_NAME, LAST_NAME,EMAIL,AVATAR_ID) VALUES ("Jacobo","apellido","jacobo@email.com",3);
+INSERT INTO USERS (FIRST_NAME, LAST_NAME,EMAIL,AVATAR_ID) VALUES ("Miguel","apellido","miguel@email.com",1);
+INSERT INTO USERS (FIRST_NAME, LAST_NAME,EMAIL,AVATAR_ID) VALUES ("Jose","apellido","jose@email.com",1);
 
 ----INSERT EN SCORES
 INSERT INTO SCORES (numfails, email) VALUES ( 1,"jose@email.com");

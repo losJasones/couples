@@ -39,11 +39,11 @@
         vm.showErrorMsg = true;
       } else {
         vm.showErrorMsg = false;
-        couplesFactory.setUser(vm.firstName, vm.lastName, vm.newEmail,vm.avatar);
       }
 
       if (!vm.showErrorMsg) {
         vm.newFormIsSend = false;
+        couplesFactory.setUser(vm.firstName, vm.lastName, vm.newEmail,vm.avatar);
         couplesFactory.shuffleCards();
         $state.go('game', {player: newPlayer});
       };

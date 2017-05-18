@@ -34,36 +34,35 @@
     }
 
     module.setUser = function (_firstName, _lastName, _email, _avatar) {
-      let user = self.getuser(email);
-      if (!user) {
-        $http({
-          url: 'http://localhost:8080/couples/user',
-          method: 'POST',
-          data: {
-            email: _email,
-            firstName: _firstName,
-            lastName: _lastName,
-            avatar: _avatar
-          }
-        }).then(function (res) {
-          self.setAvatars(res.data);
-          return true;
-        }, function (error) {
-          console.log(error);
-          return false;
-        });
-      }else return false;
+      //let user = self.getuser(_email);
+      //if (!user) {
+      let isSaved = $http({
+        url: 'http://localhost:8080/couples/user',
+        method: 'POST',
+        data: {
+          email: _email,
+          firstName: _firstName,
+          lastName: _lastName,
+          avatar: _avatar
+        }
+      }).then(function (res) {
+        let isSaved = res.data;
+        return isSaved;
+      }, function (error) {
+        console.log(error);
+      });
+      return isSaved;
     }
 
     module.getUser = function (_email) {
-        $http({
-          url: 'http://localhost:8080/couples/user/'+_email,
-          method: 'GET',
-        }).then(function (res) {
-          return res.data;
-        }, function (error) {
-          console.log(error);
-        });
+      $http({
+        url: 'http://localhost:8080/couples/user/' + _email,
+        method: 'GET',
+      }).then(function (res) {
+        return res.data;
+      }, function (error) {
+        console.log(error);
+      });
     }
 
     module.setAvatars = function (avatars) {

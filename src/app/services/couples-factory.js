@@ -10,7 +10,7 @@
 
     module.getCards = function () {
       $http({
-        url: 'http://localhost:8080/couples/card',
+        url: 'http://localhost:8080/couples/cards',
         method: 'GET'
       }).then(function (res) {
         for (var i=0; i<res.data.length; i++){
@@ -24,7 +24,7 @@
 
     module.getAvatars = function () {
       $http({
-        url: 'http://localhost:8080/couples/avatar',
+        url: 'http://localhost:8080/couples/avatars',
         method: 'GET'
       }).then(function (res) {
         for (var i=0; i<res.data.length; i++){

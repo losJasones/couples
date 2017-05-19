@@ -11,14 +11,14 @@
 }
 
 .main-container {
-  width: 900px;
-  padding: 30px;
+  width: 1000px;
+  padding: 20px;
   text-align: center;
 }
 
 /*header*/
 .header{
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .logo:hover{
@@ -26,7 +26,7 @@
 }
 
 .logo{
-  width: 150px;
+  width: 130px;
 }
 
 /*footer*/
@@ -60,12 +60,36 @@
   cursor: pointer;
 }
 
-/*aboutUs*/
-.aboutUs{
+/*about*/
+.header-text{
   font-family: 'Dosis', sans-serif;
+  font-weight: bold;
   text-align: center;
   color: #121623;
   font-size: 30px;
+}
+
+.members-img{
+  margin: 20px;
+  width: 130px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
+}
+
+.members-name{
+  margin: 10px;
+  font-family: 'Dosis', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #c3002f;
+  font-size: 20px;
+}
+
+.key-name{
+  font-family: 'Dosis', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #121623;
+  font-size: 20px;
 }
 
 /*topSscores*/
@@ -82,17 +106,28 @@
 }
 
 .cell-table{
-  padding: 20px;
+  padding: 5px;
   font-family: 'Dosis', sans-serif;
   color: #121623;
   font-size: 15px;
   font-weight: bold;
-  background-blend-mode: grey;
+  border-bottom: #e2e2e2 1px solid;
 }
 
 /*main*/
 .main-state{
-  padding: 30px;
+  padding: 20px;
+}
+
+.welcome{
+  margin-top: 0px;
+  margin-bottom: 30px;
+  padding: 10px;
+  font-family: 'Dosis', sans-serif;
+  color: #121623;
+  font-size: 30px;
+  font-weight: bold;
+
 }
 
 /*login*/
@@ -217,7 +252,7 @@
 .guesses-box{
   display: inline-block;
   padding: 5px;
-  margin: 15px;
+  margin: 10px;
   background-color: #fcfcfc;
   font-family: 'Dosis', sans-serif;
   color: #121623;
@@ -230,7 +265,7 @@
 .misses-box{
   display: inline-block;
   padding: 5px;
-  margin: 15px;
+  margin: 10px;
   background-color: #c3002f;
   font-family: 'Dosis', sans-serif;
   color: #fff;
@@ -242,14 +277,15 @@
 
 .msg-success {
   display: inline-block;
-  margin: 20px;
   padding: 5px;
-  background-color: #fcfcfc;
-  color: #666;
+  color: #121623;
   font-family: 'Dosis', sans-serif;
   font-weight: bold;
-  font-size: 30px;
-  border: 1px solid #666;
-  border-radius: 5px;
-  animation-delay: 2s;
+  font-size: 35px;
+}
+
+.frigopie{
+  margin-bottom: 0px;
+  margin-top: 30px;
+  width: 100px;
 }

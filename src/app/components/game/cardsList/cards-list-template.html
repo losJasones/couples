@@ -4,7 +4,10 @@
         <div class="misses-box"><span>Missed: {{cardsList.misses}}</span></div>
     </div>
 
-    <div class="msg-success" ng-show="cardsList.showSuccessMessage">FRIGOPIE PA TI!!!</div>
+    <div ng-show="cardsList.showSuccessMessage">
+    	<p><img class="frigopie animated bounceIn" src="app/styles/imgs/frigopie.png"></p>
+    	<p class="msg-success animated bounceIn">¡¡¡FRIGOPIE PA TI!!!</p>
+    </div>
 
     <cards-card ng-repeat="item in cardsList.remainingCards" item-card="item" ng-click="cardsList.actions.showCard(item.id)"></cards-card>
     	<div>

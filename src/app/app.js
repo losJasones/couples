@@ -27,9 +27,9 @@
     };
 
     var about = {
-      name: 'aboutUs',
-      url: '/aboutUs',
-      template: '<h1 class="aboutUs">We love games as you do!</h1>'
+      name: 'about',
+      url: '/about',
+      template: '<view-about></view-about>'
     };
 
     var game = {

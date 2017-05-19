@@ -1,69 +1,74 @@
-<article>
-    <div class="row ">
-        <div class="col-xs-6">
-
-           <p class="player-labels">SIGN UP</p>
-
+<div class="container-form">
+    <div class="container-form-up">
+        <p class="sign">SIGN UP</p>
             <div class="msg-error animated fadeIn" ng-show="viewLogin.showErrorMsg">
                 First name, last name and avatar are required
+            </div>  
+
+        <form class="form-horizontal" role="form">
+
+          <div class="form-group">
+            <label for="firstName" class="col-sm-4 control-label player-labels">First name</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="firstName" ng-model="viewLogin.firstName" ng-class="{ 'has-error': !viewLogin.firstName && viewLogin.newformIsSend }">
             </div>
+          </div>
 
-            <p>
-                <label for="firstName" class="player-labels">First name</label>
-                <input type="text" id="firstName" ng-model="viewLogin.firstName" ng-class="{ 'has-error': !viewLogin.firstName && viewLogin.newformIsSend }">
-            </p>
+          <div class="form-group">
+            <label for="lastName" class="col-sm-4 control-label player-labels">Last name</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="lastName" ng-model="viewLogin.lastName" ng-class="{ 'has-error': !viewLogin.lastName && viewLogin.newFormIsSend }">
+            </div>
+          </div>
 
-            <p>
-                <label for="lastName" class="player-labels">Last name</label>
-                <input type="text" id="lastName" ng-model="viewLogin.lastName" ng-class="{ 'has-error': !viewLogin.lastName && viewLogin.newFormIsSend }">
-            </p>
-
-            <p>
-                <label for="newEmail" class="player-labels">Email account</label>
-
-                <input type="text" id="newEmail" ng-model="viewLogin.newEmail" ng-class="{ 'has-error': !viewLogin.newEmail && viewLogin.newFormIsSend }">
-            </p>
-
-            <p>
-                <label for="avatar" class="player-labels">Avatar</label>
-                <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar1" name="avatar" id="radio1">
+          <div class="form-group">
+            <label for="newEmail" class="col-sm-4 control-label player-labels">Email account</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="newEmail" ng-model="viewLogin.newEmail" ng-class="{ 'has-error': !viewLogin.newEmail && viewLogin.newFormIsSend }">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="avatar" class="col-sm-4 control-label player-labels">Avatar</label>
+            <div class="col-sm-6">
+              <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar1" name="avatar" id="radio1">
                 <label class="label_item" for="radio1"> <img class="avatar-img" ng-src="app/styles/imgs/{{viewLogin.actions.getAvatar(1)}}"> </label>
 
-               <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar2" name="avatar" id="radio2">
+                <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar2" name="avatar" id="radio2">
                 <label class="label_item" for="radio2"> <img class="avatar-img" ng-src="app/styles/imgs/{{viewLogin.actions.getAvatar(2)}}"> </label>
 
-               <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar3" name="avatar" id="radio3">
+                <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar3" name="avatar" id="radio3">
                 <label class="label_item" for="radio3"> <img class="avatar-img" ng-src="app/styles/imgs/{{viewLogin.actions.getAvatar(3)}}"> </label>
-            </p>
+            </div>
+          </div>
 
-            <p>
-            <button ng-click="viewLogin.actions.goToGameFromNew()" type="button" class="btn btn-default">PLAY</button>
-            </p>
+          <div class="form-group">
+            <div class="col-lg-12">
+              <button ng-click="viewLogin.actions.goToGameFromNew()" type="button" class="btn btn-default">PLAY</button>
+            </div>
+          </div>
 
-        </div>
+        </form>
+    </div>    
 
-        <div class="col-xs-6">
-          
-            <p class="player-labels">SIGN IN</p>
-
+    <div class="container-form-in">
+        <p class="sign">SIGN IN</p>
             <div class="msg-error animated fadeIn" ng-show="viewLogin.showOldErrorMsg">
                 Please, enter your email account
-            </div>
-
+            </div>  
             <div class="msg-error animated fadeIn" ng-show="viewLogin.showNotOldErrorMsg">
                 There's no such email registered. Please register as a new Player, or enter a registered email
+            </div>  
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label for="oldEmail" class="col-sm-4 control-label player-labels">Email account</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="oldEmail" ng-model="viewLogin.oldEmail" ng-class="{ 'has-error': !viewLogin.oldEmail && viewLogin.oldFormIsSend }">
             </div>
-
-            <p>
-                <label for="oldEmail" class="player-labels">Email account</label>
-                <input type="text" id="oldEmail" ng-model="viewLogin.oldEmail" ng-class="{ 'has-error': !viewLogin.oldEmail && viewLogin.oldFormIsSend }">
-            </p>
-
-            <p>
-                <button ng-click="viewLogin.actions.goToGameFromOld()" type="button" class="btn btn-default">PLAY
-                </button>
-            </p>
-
-        </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-12">
+              <button ng-click="viewLogin.actions.goToGameFromOld()" type="button" class="btn btn-default">PLAY</button>
+            </div>
+          </div>
+        </form>
     </div>
-</article>

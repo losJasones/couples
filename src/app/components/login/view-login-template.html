@@ -27,18 +27,17 @@
               <input type="text" class="form-control" id="newEmail" ng-model="viewLogin.newEmail" ng-class="{ 'has-error': !viewLogin.newEmail && viewLogin.newFormIsSend }">
             </div>
           </div>
-
           <div class="form-group">
             <label for="avatar" class="col-sm-4 control-label player-labels">Avatar</label>
             <div class="col-sm-6">
               <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar1" name="avatar" id="radio1">
-                <label class="label_item" for="radio1"> <img class="avatar-img" src="app/styles/imgs/avatar1.png"> </label>
+                <label class="label_item" for="radio1"> <img class="avatar-img" ng-src="app/styles/imgs/{{viewLogin.actions.getAvatar(1)}}"> </label>
 
                 <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar2" name="avatar" id="radio2">
-                <label class="label_item" for="radio2"> <img class="avatar-img" src="app/styles/imgs/avatar2.png"> </label>
+                <label class="label_item" for="radio2"> <img class="avatar-img" ng-src="app/styles/imgs/{{viewLogin.actions.getAvatar(2)}}"> </label>
 
                 <input type="radio" ng-model="viewLogin.avatar" class="radio_item" value="avatar3" name="avatar" id="radio3">
-                <label class="label_item" for="radio3"> <img class="avatar-img" src="app/styles/imgs/avatar3.png"> </label>
+                <label class="label_item" for="radio3"> <img class="avatar-img" ng-src="app/styles/imgs/{{viewLogin.actions.getAvatar(3)}}"> </label>
             </div>
           </div>
 
@@ -55,16 +54,17 @@
         <p class="sign">SIGN IN</p>
             <div class="msg-error animated fadeIn" ng-show="viewLogin.showOldErrorMsg">
                 Please, enter your email account
-            </div>    
+            </div>  
+            <div class="msg-error animated fadeIn" ng-show="viewLogin.showNotOldErrorMsg">
+                There's no such email registered. Please register as a new Player, or enter a registered email
+            </div>  
         <form class="form-horizontal" role="form">
-
           <div class="form-group">
             <label for="oldEmail" class="col-sm-4 control-label player-labels">Email account</label>
             <div class="col-sm-6">
               <input type="text" class="form-control" id="oldEmail" ng-model="viewLogin.oldEmail" ng-class="{ 'has-error': !viewLogin.oldEmail && viewLogin.oldFormIsSend }">
             </div>
           </div>
-
           <div class="form-group">
             <div class="col-lg-12">
               <button ng-click="viewLogin.actions.goToGameFromOld()" type="button" class="btn btn-default">PLAY</button>

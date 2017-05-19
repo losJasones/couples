@@ -1,54 +1,90 @@
 (function (angular) {
 
-  angular.module('app').factory('couplesFactory', ['$http', couplesFactory]);
+  angular.module('app').factory('couplesFactory', ['$http', '$q', couplesFactory]);
 
-  function couplesFactory($http) {
+  function couplesFactory($http, $q) {
     var module = {};
     var self = module;
-    var allCards={};
-    var allAvatars={};
+    var allCards = {};
+    module.allAvatars = {};
 
-    module.getCards = function () {
+    module.initCards = function () {
       $http({
         url: 'http://localhost:8080/couples/cards',
         method: 'GET'
       }).then(function (res) {
-        for (var i=0; i<res.data.length; i++){
-          res.data[i].isVisible=false;
-        }    
+        for (var i = 0; i < res.data.length; i++) {
+          res.data[i].isVisible = false;
+        }
         self.setCards(res.data);
       }, function (error) {
         console.log(error);
       });
     }
 
-    module.getAvatars = function () {
+    module.initAvatars = function () {
       $http({
         url: 'http://localhost:8080/couples/avatars',
         method: 'GET'
       }).then(function (res) {
-        for (var i=0; i<res.data.length; i++){
-          res.data[i].isVisible=false;
-        }    
         self.setAvatars(res.data);
       }, function (error) {
         console.log(error);
       });
     }
 
-    module.setAvatars= function(avatars){
-      allAvatars=avatars;
+    module.saveUser = function (_firstName, _lastName, _email, _avatar) {
+      let isSaved = $http({
+        url: 'http://localhost:8080/couples/user',
+        method: 'POST',
+        data: {
+          "email": ""+_email+"",
+          "firstName": ""+_firstName+"",
+          "lastName": ""+_lastName+"",
+          "avatar": {
+            "id": ""+_avatar.substring(6)+"",
+            "name": ""+_avatar+"",
+            "img": ""+_avatar+".png"
+          }
+          
+        }
+      }).then(function (res) {
+        let isSaved = res.data;
+        return isSaved;
+      }, function (error) {
+        console.log(error);
+      });
+      return isSaved;
     }
 
-    module.getAvatars= function(){
-      return allAvatars;
+    module.getUser = function (_email) {
+      var defered = $q.defer();
+      var promise = defered.promise;
+      $http({
+        url: 'http://localhost:8080/couples/user/' + _email,
+        method: 'GET',
+      }).then(function (res) {
+        defered.resolve(res.data);
+      }, function (error) {
+        defered.reject(error)
+        console.log(error);
+      });
+      return promise;
+    }
+
+    module.setAvatars = function (avatars) {
+      self.allAvatars = avatars;
+    }
+
+    module.getAvatars = function () {
+      return self.allAvatars;
     }
 
     module.remainingCards = {};
 
-    module.setCards = function(cards){
-      allCards=cards;
-      self.remainingCards=angular.copy(allCards);
+    module.setCards = function (cards) {
+      allCards = cards;
+      self.remainingCards = angular.copy(allCards);
     }
 
     module.getRemainingCards = function () {
@@ -84,7 +120,7 @@
         if (currentCard.isVisible) {
           if (!isFirstFound) {
             isFirstFound = true;
-            firstVisibleCard=currentCard;
+            firstVisibleCard = currentCard;
           } else if (firstVisibleCard.name === currentCard.name) {
             return true;
           }

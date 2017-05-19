@@ -1,7 +1,7 @@
 <article>
     <h1 class="topscores-text">TOP SCORES</h1>
     <h1 class="player-labels" ng-show="(viewTopscores.topScores==0)">There are no scores yet!</h1>
-    <div ng-hide="(viewTopscores.topScores==0)"></div>
+    <div ng-hide="(viewTopscores.topScores==0)">
     <table class="topscores-table">
             <tr>
                 <td class="player-labels cell-table">POSITION</td>
@@ -11,9 +11,10 @@
             </tr>
             <tr ng-repeat="record in viewTopscores.topRecords"> 
                 <td class="player-labels cell-table">{{record.user.position}}</td>
-                <td class="player-labels cell-table"></td>
+                <td class="player-labels cell-table"><img ng-src="app/styles/imgs/avatar2.png"></td>
                 <td class="player-labels cell-table">{{record.user.firstName + ' ' + record.user.lastName }}</td>
                 <td class="player-labels cell-table">{{record.user.score + ' '}}</td>
             </tr>
     </table> 
+    </div>
 </article>

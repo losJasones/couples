@@ -12,62 +12,70 @@
     vm.$onInit = function () {
       vm.showErrorMsg = false;
       vm.showOldErrorMsg = false;
+      vm.showNotOldErrorMsg = false;
       vm.newFormIsSend = false;
       vm.oldFormIsSend = false;
     };
 
     vm.actions = {};
 
-    vm.actions.goToGameFromNew = function () {
-      vm.showOldErrorMsg=false;
-      vm.oldFormIsSend = false;
-      vm.oldEmail='';
-      var newPlayer = {
-        firstName: vm.firstName,
-        lastName: vm.lastName,
-        newEmail: vm.newEmail,
-        avatar: vm.avatar,
-      };
-      vm.newFormIsSend = true;
+    vm.actions.getAvatar = function (id) {
+      return couplesFactory.getAvatars()[id - 1].img;
+    }
 
-      if (!newPlayer.firstName || !newPlayer.lastName || !newPlayer.avatar || !newPlayer.newEmail) {
+    vm.actions.goToGameFromNew = function () {
+      vm.showOldErrorMsg = false;
+      vm.showNotOldErrorMsg = false;
+      vm.oldFormIsSend = false;
+      vm.oldEmail = '';
+      if (!vm.firstName || !vm.lastName || !vm.avatar || !vm.newEmail) {
         vm.showErrorMsg = true;
+        vm.newFormIsSend = true;
       } else {
         vm.showErrorMsg = false;
-      }
-
-      if (!vm.showErrorMsg) {
         vm.newFormIsSend = false;
+        var newPlayer = {
+          firstName: vm.firstName,
+          lastName: vm.lastName,
+          email: vm.newEmail,
+          avatar: {
+            id: vm.avatar.substring(6),
+            name: vm.avatar,
+            img: vm.avatar + '.png'
+          }
+        }
+        couplesFactory.saveUser(vm.firstName, vm.lastName, vm.newEmail, vm.avatar);
         couplesFactory.shuffleCards();
-        $state.go('game', {player: newPlayer});
-      };
+        $state.go('game', { player: newPlayer });
+      }
     }
 
     vm.actions.goToGameFromOld = function () {
-      vm.showErrorMsg=false;
+      vm.showErrorMsg = false;
       vm.newFormIsSend = false;
-       vm.newEmail='';
-       vm.firstName='';
-       vm.lastName='';
-      var oldPlayer = {
-        firstName: 'Veteran player name',
-        lastName: 'Veteran player last name',
-        oldEmail: vm.oldEmail,
-        avatar: vm.avatar,
-      };
-      vm.oldFormIsSend = true;
+      vm.newEmail = '';
+      vm.firstName = '';
+      vm.lastName = '';
 
-      if (!oldPlayer.oldEmail ) {
+      if (!vm.oldEmail) {
         vm.showOldErrorMsg = true;
+        vm.oldFormIsSend = true;
       } else {
         vm.showOldErrorMsg = false;
-      }
-
-      if (!vm.showOldErrorMsg) {
         vm.oldFormIsSend = false;
-        couplesFactory.shuffleCards();
-        $state.go('game', {player: oldPlayer});
-      };
+        var oldPlayer={};
+        var promise = couplesFactory.getUser(vm.oldEmail);
+        promise.then(function(restResponse){
+          oldPlayer=restResponse;
+          if (!oldPlayer || !oldPlayer.email) {
+          vm.showNotOldErrorMsg = true;
+          vm.oldFormIsSend = true;
+        } else {
+          couplesFactory.shuffleCards();
+          $state.go('game', { player: oldPlayer });
+        };
+        }, function(error){console.log(error)}); 
+      }
     }
   }
 })(angular);

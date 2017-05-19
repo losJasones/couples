@@ -9,11 +9,10 @@
         </div>
         <div class="player-labels" ng-repeat="record in viewTopscores.topRecords">
             <span class="scores-table-column">{{record.user.position}}</span>
+            <img class="avatar-img" ng-src="app/styles/imgs/avatar2.png">
             <span class="scores-table-column">{{record.user.firstName + ' ' + record.user.lastName }}</span>
             <span>{{record.user.score + ' '}}</span>
         </div>
     </div>
     <br>
 </article>
-<!-- <scores-score ng-repeat="item in viewTopscores.topScores" item-score="item" >
-    </scores-score>-->

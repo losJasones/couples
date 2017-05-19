@@ -10,14 +10,14 @@
     var vm = this;
 
     vm.$onInit = function() {
-        vm.topScores = 1;
+        vm.topScores = 10;
         vm.topRecords=[];
-        for (var i=1; i<11; ++i){
+        for (var i=1; i<=vm.topScores; i++){
           vm.topRecords[i]={
             user: {
               position: i,
-              firstName: 'Bart',
-              lastName: 'Simpson',
+              firstName: 'Frigopies',
+              lastName: 'S.A.',
               avatar: 'avatar2',
               score: 0
             }

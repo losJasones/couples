@@ -34,12 +34,12 @@ public class UserController {
 		return false;
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/user/{email:.+}")
+	@RequestMapping(method = RequestMethod.GET, path = "/user/{email:.+}")
 	public User getUser(@PathVariable String email) {
 
 		System.out.println(email);
 
-		return repository.findByEmail(email);
+		return repository.findOne(email);
 	}
 
 	@RequestMapping(path = "/users", method = RequestMethod.GET)

@@ -1,8 +1,8 @@
 (function (angular) {
 
-  angular.module('app').factory('couplesFactory', ['$http', couplesFactory]);
+  angular.module('app').factory('couplesFactory', ['$http', '$q', couplesFactory]);
 
-  function couplesFactory($http) {
+  function couplesFactory($http, $q) {
     var module = {};
     var self = module;
     var allCards = {};
@@ -33,17 +33,20 @@
       });
     }
 
-    module.setUser = function (_firstName, _lastName, _email, _avatar) {
-      //let user = self.getuser(_email);
-      //if (!user) {
+    module.saveUser = function (_firstName, _lastName, _email, _avatar) {
       let isSaved = $http({
         url: 'http://localhost:8080/couples/user',
         method: 'POST',
         data: {
-          email: _email,
-          firstName: _firstName,
-          lastName: _lastName,
-          avatar: _avatar
+          "email": ""+_email+"",
+          "firstName": ""+_firstName+"",
+          "lastName": ""+_lastName+"",
+          "avatar": {
+            "id": ""+_avatar.substring(6)+"",
+            "name": ""+_avatar+"",
+            "img": ""+_avatar+".png"
+          }
+          
         }
       }).then(function (res) {
         let isSaved = res.data;
@@ -55,14 +58,18 @@
     }
 
     module.getUser = function (_email) {
+      var defered = $q.defer();
+      var promise = defered.promise;
       $http({
         url: 'http://localhost:8080/couples/user/' + _email,
         method: 'GET',
       }).then(function (res) {
-        return res.data;
+        defered.resolve(res.data);
       }, function (error) {
+        defered.reject(error)
         console.log(error);
       });
+      return promise;
     }
 
     module.setAvatars = function (avatars) {

@@ -50,6 +50,10 @@
                 Please, enter your email account
             </div>
 
+            <div class="msg-error animated fadeIn" ng-show="viewLogin.showNotOldErrorMsg">
+                There's no such email registered. Please register as a new Player, or enter a registered email
+            </div>
+
             <p>
                 <label for="oldEmail" class="player-labels">Email account</label>
                 <input type="text" id="oldEmail" ng-model="viewLogin.oldEmail" ng-class="{ 'has-error': !viewLogin.oldEmail && viewLogin.oldFormIsSend }">

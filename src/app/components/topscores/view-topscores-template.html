@@ -5,13 +5,11 @@
     <table class="topscores-table">
             <tr>
                 <td class="player-labels cell-table">POSITION</td>
-                <td class="player-labels cell-table">AVATAR</td>
                 <td class="player-labels cell-table">PLAYER</td>
                 <td class="player-labels cell-table">MISSES</td> 
             </tr>
             <tr ng-repeat="record in viewTopscores.topRecords"> 
                 <td class="player-labels cell-table">{{record.user.position}}</td>
-                <td class="player-labels cell-table"><img ng-src="app/styles/imgs/avatar2.png"></td>
                 <td class="player-labels cell-table">{{record.user.firstName + ' ' + record.user.lastName }}</td>
                 <td class="player-labels cell-table">{{record.user.score + ' '}}</td>
             </tr>
